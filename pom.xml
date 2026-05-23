@@ -30,6 +30,29 @@
             <scope>compile</scope>
         </dependency>
 
+
+        <!-- this makes code runner output Ui clean by suppressing spam msg from hibernate such as hibernate version, db, etc  -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.5.13</version>
+        </dependency>
+
+
     </dependencies>
+
+    <!-- this adds support from running code form command line with "mvn clean compile" and "mvn exec:java" -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.1</version>
+                <configuration>
+                    <mainClass>org.example.Main</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
