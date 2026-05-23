@@ -2,9 +2,10 @@ package org.example;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
-@Table(name = "alien")
-public class AlienEntity {
+public class Alien {
 
     @Id
     @Column(name = "id")
@@ -13,6 +14,9 @@ public class AlienEntity {
     private String a_name;
     @Column(name = "tech")
     private String a_tech;
+
+    @OneToMany
+    private List<Laptop> laptops;
 
     public int getA_id() {
         return a_id;
@@ -38,12 +42,21 @@ public class AlienEntity {
         this.a_tech = a_tech;
     }
 
+    public List<Laptop> getLaptops() {
+        return laptops;
+    }
+
+    public void setLaptops(List<Laptop> laptops) {
+        this.laptops = laptops;
+    }
+
     @Override
     public String toString() {
-        return "AlienEntity{" +
+        return "Alien={" +
                 "a_id=" + a_id +
                 ", a_name='" + a_name + '\'' +
                 ", a_tech='" + a_tech + '\'' +
+                ", laptops=" + laptops +
                 '}';
     }
 }
